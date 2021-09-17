@@ -1,0 +1,12 @@
+.home {
+}
+.home::-webkit-scrollbar {
+  display: none;
+  width: 10px;
+}
+.home::-webkit-scrollbar-thumb {
+  background-image: transparent !important;
+}
+.home::-webkit-scrollbar-track {
+  background: red;
+}

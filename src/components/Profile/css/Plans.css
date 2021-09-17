@@ -1,0 +1,55 @@
+.plans {
+  width: 100%;
+}
+.plans__plan {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+
+  opacity: 0.7;
+  transition: all 0.5s;
+}
+.plans__plan:hover {
+  opacity: 1;
+}
+.plans__renewal {
+  color: #dddad6;
+  padding-bottom: 0.2rem;
+  padding-top: 0.05rem;
+}
+.plans__button {
+  cursor: pointer;
+}
+.plans__current {
+  width: auto !important;
+  background: #999 !important;
+  border: solid 2px #999 !important;
+  border-radius: 0px !important;
+  color: #fff !important;
+  cursor: no-drop !important;
+}
+.plans__info h5 {
+  font-weight: normal;
+  font-size: 1.13rem;
+}
+.plans__info h6 {
+  font-weight: normal;
+  font-size: 0.75rem;
+}
+.plans__button {
+  width: auto !important;
+}
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(20, 20, 20, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}

@@ -1,0 +1,113 @@
+.profile {
+  height: 100vh;
+  color: white;
+}
+.profile__body {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+  max-width: 800px;
+  padding-top: 100px;
+}
+.profile__body h1 {
+  font-weight: 100;
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #252525;
+}
+.profile__info {
+  display: flex;
+}
+.profile__pictureContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.noDisplay {
+  display: none;
+}
+.MuiButtonBase-root.MuiButton-containedPrimary {
+  position: relative;
+  z-index: 2;
+  width: 100px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 1rem;
+  border: 2px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    rgba(34, 175, 255, 0.9),
+    rgba(39, 203, 221, 0.9)
+  );
+  background: transparent;
+  overflow: hidden;
+}
+.MuiButtonBase-root.MuiButton-containedPrimary p {
+  position: relative;
+  z-index: 2;
+  text-transform: none;
+  text-align: center;
+  line-height: 20px;
+}
+.MuiButtonBase-root.MuiButton-containedPrimary:hover {
+  background: transparent !important;
+}
+.MuiButtonBase-root.MuiButton-containedPrimary:before {
+  content: '';
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(rgba(34, 175, 255, 0.9), rgba(39, 203, 221, 0.9));
+  position: absolute;
+  top: 0;
+  left: -105%;
+  transition: all 0.2s ease;
+}
+.MuiButtonBase-root.MuiButton-containedPrimary:hover:before {
+  left: 0;
+  z-index: 0;
+}
+.profile__info img {
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+}
+.profile__details {
+  margin-left: 30px;
+  flex: 1;
+}
+.profile__details input[type='text'] {
+  background: gray;
+  width: 60%;
+  color: white;
+  outline: none;
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  padding-left: 20px;
+  font-weight: normal;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+.profile__plans h3 {
+  margin-top: 20px;
+}
+.profile__plans h3 {
+  border-bottom: 1px solid #252525;
+  padding-bottom: 8px;
+}
+.profile__signOut {
+  padding: 10px 20px;
+  width: 100%;
+  margin-top: 20px;
+  color: #fff;
+  border: none;
+  background: linear-gradient(#22afff, #27cbdd);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.1rem;
+}

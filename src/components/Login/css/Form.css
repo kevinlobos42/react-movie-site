@@ -1,0 +1,122 @@
+.signInForm {
+  height: 45vh;
+  width: 35vw;
+  background: rgba(8, 8, 8, 0.9);
+  margin: auto;
+  box-sizing: border-box;
+  padding: 2rem 0;
+  transition: all 1s;
+  animation: fadeInUp 0.5s;
+}
+form {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  width: 70%;
+  margin: auto;
+}
+form input,
+form button {
+  width: 100%;
+  padding: 1rem 0.5rem;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+form input {
+  color: #dddad6;
+  background: #333;
+}
+form button {
+  background: linear-gradient(#22afff, #27cbdd);
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.8rem;
+}
+.signInForm p {
+  color: gray;
+}
+.signInForm__signUp {
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.signInForm__signUp:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+.signInForm form .alert {
+  color: red;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    margin-top: 400px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 00px;
+  }
+}
+@media screen and (min-width: 2000px) {
+  .signInForm {
+    width: 25vw;
+    height: 50vh;
+  }
+  .signInForm h1 {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .signInForm {
+    width: 40vw;
+  }
+}
+@media screen and (max-width: 800px) {
+  .signInForm {
+    width: 45vw;
+  }
+}
+@media screen and (max-width: 650px) {
+  .signInForm {
+    width: 55vw;
+  }
+}
+@media screen and (max-width: 450px) {
+  .signInForm {
+    width: 75vw;
+    height: 50vh;
+  }
+  .signInForm p {
+    font-size: 1rem;
+  }
+  .signInForm form {
+    height: 80%;
+  }
+}
+@media screen and (max-width: 325px) {
+  .signInForm {
+    width: 90vw;
+    height: 65vh;
+  }
+  .signInForm p {
+    font-size: 1rem;
+  }
+  .signInForm form {
+    height: 90%;
+  }
+  .login__body {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
