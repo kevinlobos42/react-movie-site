@@ -61,6 +61,7 @@ function Profile() {
                             <Button 
                             variant="contained" color="primary"
                             component="span"
+                            className="inputButton"
                             onClick={changeEmail}
                             ><p>Change Email</p></Button>
                         </div>

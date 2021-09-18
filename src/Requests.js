@@ -12,6 +12,6 @@ const requests = {
     fetchNetflixWithGenre: (id)=>{return `/discover/tv?api_key=${API_KEY}&with_networks=213&&with_original_language=en&with_genres=${id}`},
     fetchTopRatedWithGenre: (id)=>{return `/movie/top_rated?api_key=${API_KEY}&&with_original_language=en&with_genres=${id}`},
     fetchAllWithGenre: (id, page)=>{return `discover/movie?api_key=${API_KEY}&with_original_language=en&with_genres=${id}&page=${page}`},
-    fetchSearch: (query, page)=>{return `/search/movie?api_key=${API_KEY}&query=${query}&page=${page}&language=en-US`}
+    fetchSearch: (query, page)=>{return `/search/movie?api_key=${API_KEY}&query=${query}&page=${page}&language=en-US&with_original_language=en`}
 }
 export default requests

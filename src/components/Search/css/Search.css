@@ -40,6 +40,7 @@
   padding-top: 10px;
   padding-bottom: 25px;
   padding-left: 20px;
+  padding-right: 10px;
   overflow: hidden;
 }
 .search__poster {
@@ -55,4 +56,24 @@
 }
 .search__poster:hover ~ .hover {
   opacity: 1;
+}
+@media screen and (max-width: 1000px) {
+  .search__posters {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 700px) {
+  .search__posters {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 450px) {
+  .search__posters {
+    grid-template-columns: repeat(1, 1fr);
+    padding-right: 30px;
+  }
+  .search__title {
+    font-size: 1.5rem;
+    padding-bottom: 20px;
+  }
 }

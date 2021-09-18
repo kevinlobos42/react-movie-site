@@ -39,6 +39,7 @@
   padding-top: 10px;
   padding-bottom: 25px;
   padding-left: 20px;
+  padding-right: 30px;
   overflow: hidden;
 }
 .allMovies__poster {
@@ -54,4 +55,19 @@
 }
 .allMovies__poster:hover ~ .hover {
   opacity: 1;
+}
+@media screen and (max-width: 1000px) {
+  .allMovies__posters {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 650px) {
+  .allMovies__posters {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 500px) {
+  .allMovies__posters {
+    grid-template-columns: 1fr;
+  }
 }
