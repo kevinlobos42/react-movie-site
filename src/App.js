@@ -14,6 +14,7 @@ import { login, logout, selectUser } from './features/counter/userSlice';
 import Profile from './components/Profile/Profile';
 import Genres from './components/Genres/Genres';
 import Search from './components/Search/Search';
+import Movie from './components/Movie/Movie';
 
 function App() {
   const user = useSelector(selectUser);
@@ -79,6 +80,9 @@ function App() {
             </Route>
             <Route path='/search'>
               <Search/>
+            </Route>
+            <Route path='/movie'>
+              <Movie />
             </Route>
           </Switch>
         </Router>

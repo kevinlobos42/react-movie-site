@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import axios from '../../axios';
 import requests from '../../Requests'
 import './css/MainMovie.css'
 
 function MainMovie() {
     const [movie, setMovie] = useState();
+    const history = useHistory()
     useEffect(() => {
         async function fetchData(){
             const req = await axios.get(requests.fetchTrending);
@@ -38,8 +40,8 @@ function MainMovie() {
                 <h1 className="main__desc">{truncateText(movie?.overview,150)}</h1>
                 <div className="main__buttons">
                     <button className="main__btn"><p>Play</p></button>
-                    <button className="main__btn main__btn__primary">
-                        <p>Add to  My List</p></button>
+                    <button className="main__btn main__btn__primary" onClick={()=>{history.push(`/movie?id=${movie.id}`)}}>
+                        <p>More Information</p></button>
                 </div>
             </div>
             <div className="main--fadeAllSides" /> 

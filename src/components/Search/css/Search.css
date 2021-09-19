@@ -23,7 +23,7 @@
 }
 .search {
   color: #dddad6;
-  padding-bottom: 2.5rem;
+  padding-bottom: 1rem;
   margin-left: 10px;
   min-height: 100vh;
   padding-top: 90px;
@@ -76,4 +76,7 @@
     font-size: 1.5rem;
     padding-bottom: 20px;
   }
+}
+.searchPage {
+  padding-bottom: 50px;
 }

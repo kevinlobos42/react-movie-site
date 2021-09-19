@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react'
 import axios from '../../axios'
 import {GrLinkNext} from 'react-icons/gr'
 import './css/Row.css'
+import { useHistory } from 'react-router'
 
 function Row({title, fetchUrl, isLargeRow = false}) {
     const [movies, setMovies] = useState()
+    const history = useHistory();
     const base_url = "https://image.tmdb.org/t/p/original/"
     useEffect(() => {
         async function fetchData(){
@@ -33,7 +35,7 @@ function Row({title, fetchUrl, isLargeRow = false}) {
                 ((isLargeRow && movie.poster_path) ||
                     (!isLargeRow && movie.backdrop_path)) && (
                         <div key={idx} >
-                            <div className="row__image__container">
+                            <div className="row__image__container" onClick={()=>{history.push(`/movie?id=${movie.id}`)}}>
                                 <img className={`row__poster ${isLargeRow && 'row__poster__large'}`} src={`${base_url}${
                                     isLargeRow ? movie.poster_path : movie.backdrop_path
                                 }`} alt={movie?.original_title || movie?.name || movie?.original_name}/>

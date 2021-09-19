@@ -56,6 +56,21 @@
 .allMovies__poster:hover ~ .hover {
   opacity: 1;
 }
+.button-container {
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+.button-container > button.MuiButtonBase-root {
+  width: 150px;
+  height: auto;
+}
+.button-container > * h5 {
+  position: relative;
+  z-index: 10;
+  text-transform: none;
+}
 @media screen and (max-width: 1000px) {
   .allMovies__posters {
     grid-template-columns: repeat(3, 1fr);

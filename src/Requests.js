@@ -12,6 +12,10 @@ const requests = {
     fetchNetflixWithGenre: (id)=>{return `/discover/tv?api_key=${API_KEY}&with_networks=213&&with_original_language=en&with_genres=${id}`},
     fetchTopRatedWithGenre: (id)=>{return `/movie/top_rated?api_key=${API_KEY}&&with_original_language=en&with_genres=${id}`},
     fetchAllWithGenre: (id, page)=>{return `discover/movie?api_key=${API_KEY}&with_original_language=en&with_genres=${id}&page=${page}`},
-    fetchSearch: (query, page)=>{return `/search/movie?api_key=${API_KEY}&query=${query}&page=${page}&language=en-US&with_original_language=en`}
+    fetchSearch: (query, page)=>{return `/search/movie?api_key=${API_KEY}&query=${query}&page=${page}&language=en-US&with_original_language=en`},
+    fetchMovieDetails: (id) =>{return `/movie/${id}?api_key=${API_KEY}&language=en-US`},
+    fetchMovieCast: (id) =>{return `/movie/${id}/credits?api_key=${API_KEY}&language=en-US`},
+    fetchMovieSimilar: (id) =>{return `/movie/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`},
+    fetchMovieRecommended: (id) =>{return `/movie/${id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`}
 }
 export default requests
