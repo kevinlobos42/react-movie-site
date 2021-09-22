@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react'
 import axios from '../../axios'
 import {GrLinkNext} from 'react-icons/gr'
 import './css/Row.css'
-import { useHistory } from 'react-router'
+import { useHistory, useLocation } from 'react-router'
+import Movie from '../Movie/Movie'
 
 function Row({title, fetchUrl, isLargeRow = false}) {
     const [movies, setMovies] = useState()
+    const [movieID, setMovieID] = useState(null)
     const history = useHistory();
     const base_url = "https://image.tmdb.org/t/p/original/"
     useEffect(() => {
@@ -26,16 +28,27 @@ function Row({title, fetchUrl, isLargeRow = false}) {
             return 'Year: '+movie.release_date.substring(0,4)
         }
     }
+    useEffect(()=>{
+        console.log(history.location.pathname)
+        if(movieID){
+            history.push('?id='+movieID)
+            document.body.style.height='100vh'
+            document.body.style.overflowY='hidden'
+        }else{
+            history.push(history.location.pathname)
+            document.body.style.height='auto'
+            document.body.style.overflowY='auto'
+        }
+    },[movieID])
     return (
         <div className="row">
             <h2 className="row__title">{title}</h2>
             <div className={`row__posters ${isLargeRow && 'row__posters__large'}`}>
-
                 {movies && movies.map((movie,idx)=>(
                 ((isLargeRow && movie.poster_path) ||
                     (!isLargeRow && movie.backdrop_path)) && (
-                        <div key={idx} >
-                            <div className="row__image__container" onClick={()=>{history.push(`/movie?id=${movie.id}`)}}>
+                        <div key={idx} onClick={()=>setMovieID(movie.id)} >
+                            <div className="row__image__container" onClick={()=>setMovieID(movie.id)}>
                                 <img className={`row__poster ${isLargeRow && 'row__poster__large'}`} src={`${base_url}${
                                     isLargeRow ? movie.poster_path : movie.backdrop_path
                                 }`} alt={movie?.original_title || movie?.name || movie?.original_name}/>
@@ -50,6 +63,11 @@ function Row({title, fetchUrl, isLargeRow = false}) {
                     )
                 ))}
             </div>
+            {movieID && (
+                <div className="movie--cover">
+                    <Movie setMovieID={setMovieID}/>
+                </div>
+            )}
         </div>
     )
 }

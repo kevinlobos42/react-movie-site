@@ -4,6 +4,18 @@
 body::webkit-scrollbar {
   display: none;
 }
+.movie--cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(20, 20, 20, 0.8);
+  z-index: 9999;
+}
 @media screen and (max-width: 600px) {
   body {
     overflow-x: hidden;

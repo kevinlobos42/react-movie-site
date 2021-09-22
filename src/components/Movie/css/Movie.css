@@ -1,0 +1,224 @@
+.movie {
+  width: 60%;
+  max-height: 95vh;
+  overflow-y: scroll;
+  padding-bottom: 50px;
+  border-radius: 16px;
+  background: #141414;
+  transition: all 0.5s;
+  animation: popIn 0.5s;
+}
+.movie__backdrop {
+  height: 45vh;
+  position: relative;
+  border-radius: 16px 16px 0 0;
+}
+.top-right {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 4rem;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s;
+  z-index: 9;
+  height: fit-content;
+  width: fit-content;
+}
+.top-right:hover {
+  color: #111;
+}
+.movie__content > * {
+  position: absolute;
+  z-index: 10;
+  color: white;
+  left: 30px;
+  bottom: 30px;
+}
+.movie__title {
+  font-size: 4.5rem;
+  font-weight: 600;
+  padding-bottom: 3rem;
+  max-width: 1000px;
+  color: #eee;
+}
+.movie__btn {
+  position: relative;
+  cursor: pointer;
+  color: #eee;
+  outline: none;
+  border: 2px solid #eee;
+  font-weight: 700;
+  padding: 0.5rem 2rem;
+  margin-right: 1rem;
+  background: transparent;
+  transition: all 0.3s;
+  overflow: hidden;
+  font-size: 1.1rem;
+  z-index: 10;
+}
+.movie__btn:before {
+  content: '';
+  z-index: -5;
+  height: 100%;
+  width: 100%;
+  background-color: #eee;
+  position: absolute;
+  top: 0;
+  left: -210px;
+  transition: all 0.3s ease;
+}
+.movie__btn:hover {
+  z-index: 1;
+  color: black;
+}
+.movie__btn:hover:before {
+  left: 0;
+}
+.movie__details {
+  padding-left: 30px;
+  color: #eee;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.movie__details .left {
+  max-width: 60%;
+}
+.movie__details .right {
+  width: 35%;
+  font-size: 0.8rem;
+}
+.movie__details .right span {
+  color: #777;
+}
+.movie__details .right p {
+  padding-bottom: 5px;
+  color: #eee;
+}
+.movie__desc {
+  font-weight: lighter;
+  line-height: 1.5;
+  padding: 1rem 0;
+  padding-bottom: 3rem;
+  font-size: 1.1rem;
+  width: 100%;
+  font-weight: 400;
+}
+.movie__similar,
+.movies__recommended {
+  position: relative;
+
+  padding: 10px 30px;
+  color: #eee;
+  margin-top: 50px;
+}
+.movie__similar h2,
+.movies__recommended h2 {
+  font-size: 2.6rem;
+  padding-bottom: 30px;
+}
+.movies__similar__container,
+.movies__recommended__container {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  column-gap: 30px;
+  row-gap: 20px;
+  box-sizing: border-box;
+}
+.movies__recommended__container .img,
+.movies__similar__container .img {
+  position: relative;
+  max-width: 100%;
+  border-radius: 8px 8px 0px 0px;
+}
+.movies__similar__container .img img,
+.movies__recommended__container .img img {
+  width: 100%;
+}
+.movies__similar__movie,
+.movies__recommended__movie {
+  max-width: 100%;
+  background-color: #2f2f2f;
+  padding-bottom: 20px;
+  border-radius: 0px 0px 8px 8px;
+}
+.movies__similar__movie h4,
+.movies__similar__movie p,
+.movies__recommended__movie h4,
+.movies__recommended__movie p {
+  padding-left: 10px;
+  padding-top: 5px;
+}
+.fade--bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 35%;
+  background: linear-gradient(rgba(20, 20, 20, 0), rgba(20, 20, 20, 1));
+}
+.fade--allSides {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: -webkit-radial-gradient(
+    top center,
+    ellipse cover,
+    rgba(20, 20, 20, 0.1) 0%,
+    rgba(20, 20, 20, 0.4) 100%
+  );
+}
+.lineBreak {
+  width: 100%;
+  margin: auto;
+  height: 2px;
+  background: #dddad6;
+  margin: 50px 0;
+}
+.hover {
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 1.8rem;
+  transform: translate(-50%, -50%);
+  background-color: #dddad6;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.hover:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+.img img {
+  cursor: pointer;
+}
+.img img:hover ~ .hover {
+  opacity: 1;
+}
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@media screen and (max-width: 1600px) {
+  .movie {
+    width: 80%;
+  }
+}

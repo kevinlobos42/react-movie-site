@@ -81,9 +81,6 @@ function App() {
             <Route path='/search'>
               <Search/>
             </Route>
-            <Route path='/movie'>
-              <Movie />
-            </Route>
           </Switch>
         </Router>
       )}

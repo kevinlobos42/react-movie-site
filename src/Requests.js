@@ -15,7 +15,8 @@ const requests = {
     fetchSearch: (query, page)=>{return `/search/movie?api_key=${API_KEY}&query=${query}&page=${page}&language=en-US&with_original_language=en`},
     fetchMovieDetails: (id) =>{return `/movie/${id}?api_key=${API_KEY}&language=en-US`},
     fetchMovieCast: (id) =>{return `/movie/${id}/credits?api_key=${API_KEY}&language=en-US`},
-    fetchMovieSimilar: (id) =>{return `/movie/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`},
-    fetchMovieRecommended: (id) =>{return `/movie/${id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`}
+    fetchMovieSimilar: (id) =>{return `/movie/${id}/similar?api_key=${API_KEY}&language=en-US&page=1&with_original_language=en`},
+    fetchMovieRecommended: (id) =>{return `/movie/${id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`},
+    getGenreById: (id)=>{return ''}
 }
 export default requests

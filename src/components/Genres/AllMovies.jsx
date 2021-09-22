@@ -4,12 +4,27 @@ import requests from '../../Requests'
 import './css/AllMovies.css'
 import { GrLinkNext } from 'react-icons/gr'
 import { Button } from '@material-ui/core'
+import { useHistory } from 'react-router'
+import Movie from '../Movie/Movie'
 function AllMovies({title, genre}) {
     const [page,setPage] = useState(2)
     const [pageLimit,setPageLimit] = useState(100)
     const [movies,setMovies] = useState([])
     const [secondSetMovies,setSecondSetMovies] = useState([])
     const base_url = "https://image.tmdb.org/t/p/original/"
+    const [movieID, setMovieID] = useState(null)
+    const history = useHistory()
+    useEffect(()=>{
+        if(movieID){
+            history.push('?id='+movieID)
+            document.body.style.height='100vh'
+            document.body.style.overflowY='hidden'
+        }else{
+            // history.push('')
+            document.body.style.height='auto'
+            document.body.style.overflowY='auto'
+        }
+    },[movieID])
 
     useEffect(()=>{
         async function fetchData(){
@@ -61,7 +76,7 @@ function AllMovies({title, genre}) {
                 {movies && movies.map((movie,idx)=>(
                     (movie.backdrop_path) && (
                         <div key={idx} className="allMovies__movie">
-                            <div className="allMovies__image__container">
+                            <div className="allMovies__image__container" onClick={()=>setMovieID(movie.id)}>
                                 <img className="allMovies__poster" alt={movie.name} src={`${base_url}${movie.backdrop_path}`}/>
                                 <div className='hover'>
                                     <GrLinkNext />
@@ -98,6 +113,11 @@ function AllMovies({title, genre}) {
                     <h5>Previous Page</h5></Button>
                 <Button variant="contained" color="primary" onClick={()=>nextPage()}><h5>Next Page</h5></Button>
             </div>
+            {movieID && (
+                <div className="movie--cover">
+                    <Movie setMovieID={setMovieID}/>
+                </div>
+            )} 
         </div>
     )
 }

@@ -2,11 +2,24 @@ import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import axios from '../../axios';
 import requests from '../../Requests'
+import Movie from '../Movie/Movie';
 import './css/MainMovie.css'
 
 function MainMovie() {
     const [movie, setMovie] = useState();
     const history = useHistory()
+    const [movieID, setMovieID] = useState(null)
+    useEffect(()=>{
+        if(movieID){
+            history.push('?id='+movieID)
+            document.body.style.height='100vh'
+            document.body.style.overflowY='hidden'
+        }else{
+            history.push(history.location.pathname)
+            document.body.style.height='auto'
+            document.body.style.overflowY='auto'
+        }
+    },[movieID])
     useEffect(() => {
         async function fetchData(){
             const req = await axios.get(requests.fetchTrending);
@@ -18,9 +31,6 @@ function MainMovie() {
             return req;
         }
         fetchData();
-        return () => {
-            // cleanup
-        }
     }, [])
     const truncateText = (text, n)=>{
         if(text?.length > n){
@@ -40,12 +50,17 @@ function MainMovie() {
                 <h1 className="main__desc">{truncateText(movie?.overview,150)}</h1>
                 <div className="main__buttons">
                     <button className="main__btn"><p>Play</p></button>
-                    <button className="main__btn main__btn__primary" onClick={()=>{history.push(`/movie?id=${movie.id}`)}}>
+                    <button className="main__btn main__btn__primary" onClick={()=>{setMovieID(movie.id)}}>
                         <p>More Information</p></button>
                 </div>
             </div>
             <div className="main--fadeAllSides" /> 
-            <div className="main--fadeBottom" /> 
+            <div className="main--fadeBottom" />
+            {movieID && (
+                <div className="movie--cover">
+                    <Movie setMovieID={setMovieID}/>
+                </div>
+            )} 
         </header>
     )
 }

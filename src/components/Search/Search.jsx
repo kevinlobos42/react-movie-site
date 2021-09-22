@@ -1,11 +1,12 @@
 import {useState, useEffect} from 'react'
-import { useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { GrLinkNext } from "react-icons/gr";
 import Nav from "../Home/Nav";
 import axios from "../../axios";
 import requests from '../../Requests'
 import './css/Search.css'
 import { Button } from '@material-ui/core';
+import Movie from '../Movie/Movie';
 
 function Search() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -16,6 +17,20 @@ function Search() {
     const [page,setPage] = useState(2)
     const [pageLimit,setPageLimit] = useState(100)
     const base_url = "https://image.tmdb.org/t/p/original/"
+    const [movieID, setMovieID] = useState(null)
+    const history = useHistory()
+    useEffect(()=>{
+        console.log(movieID)
+        if(movieID){
+            history.push(`/search?q=${searchQuery}&id=${movieID}`)
+            document.body.style.height='100vh'
+            document.body.style.overflowY='hidden'
+        }else if(history.location.search.includes('id')){
+            history.push(`/search?q=${searchQuery}`)
+            document.body.style.height='auto'
+            document.body.style.overflowY='auto'
+        }
+    },[movieID])
     useEffect(()=>{
         async function fetchData(){
             const req = await axios.get(requests.fetchSearch(searchQuery,page-1))
@@ -46,7 +61,7 @@ function Search() {
     }
     const displayMovie = (movie, idx)=>{
         return ( (movie.backdrop_path)&&(
-            <div className="search__movie" key={idx}>
+        <div className="search__movie" key={idx} onClick={(()=>setMovieID(movie.id))}>
             <div className="search__image__container">
                 <img className="allMovies__poster" alt={movie.name} src={`${base_url}${movie.backdrop_path}`}/>
                 <div className='hover'>
@@ -95,6 +110,11 @@ function Search() {
                     <h5>Previous Page</h5></Button>
                 <Button variant="contained" color="primary" onClick={()=>nextPage()}><h5>Next Page</h5></Button>
             </div>
+            {movieID && (
+                <div className="movie--cover">
+                    <Movie setMovieID={setMovieID}/>
+                </div>
+            )} 
         </div>
     )
 }
