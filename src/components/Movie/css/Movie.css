@@ -222,3 +222,29 @@
     width: 80%;
   }
 }
+@media screen and (max-width: 1400px) {
+  .movies__similar__container,
+  .movies__recommended__container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 800px) {
+  .movie {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .movies__similar__container,
+  .movies__recommended__container {
+    grid-template-columns: 1fr;
+  }
+  .movie__details {
+    flex-direction: column;
+  }
+  .movie__details .left {
+    max-width: 90%;
+  }
+  .movie__details .right {
+    width: 90%;
+  }
+}
